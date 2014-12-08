@@ -14,9 +14,9 @@ public:
     MoveMaster() : ac("object_recognition", true) {
         n = ros::NodeHandle();
         ROS_INFO("Waiting for action server to start...");
-        //      nb  ac.waitForServer();
+        ac.waitForServer();
         ROS_INFO("Action server started, sending goal.");
-        img_position_sub = n.subscribe("/object_recognition/object_position", 1, &MoveMaster::imageDetectedCallback, this);
+        img_position_sub = n.subscribe("/object_detection/object_position", 1, &MoveMaster::imageDetectedCallback, this);
         check_map_client = n.serviceClient<robot_msgs::checkObjectInMap>("/object_in_map");
         maze_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_maze_follower");
     }
@@ -31,7 +31,7 @@ public:
                     Client::SimpleActiveCallback(),
                     Client::SimpleFeedbackCallback());
 
-        bool finished_in_time = ac.waitForResult(ros::Duration(10.0));
+        bool finished_in_time = ac.waitForResult(ros::Duration(5.0));
         if (finished_in_time) {
             ROS_INFO("Object identified before time out.");
         } else {
