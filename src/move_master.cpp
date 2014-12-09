@@ -16,14 +16,13 @@ public:
     MoveMaster() : ac("object_recognition", true) {
         n = ros::NodeHandle();
         ROS_INFO("Waiting for action server to start...");
-        //ac.waitForServer();
+        ac.waitForServer();
         ROS_INFO("Action server started, sending goal.");
         img_position_sub = n.subscribe("/object_detection/object_position", 1, &MoveMaster::imageDetectedCallback, this);
         check_map_client = n.serviceClient<robot_msgs::checkObjectInMap>("/object_in_map");
         maze_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_maze_follower");
         path_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_path_follower");
         timer = n.createTimer(ros::Duration(2.5*60), &MoveMaster::timerCallback, this, true);
-        //cost_map_sub = n.subscribe("/cost_map", 1, &MoveMaster::costMapCallback, this);
     }
 
     ~MoveMaster() {}
@@ -55,15 +54,15 @@ public:
                 if (maze_follower_client.call(srv_maze)) {
                     ROS_INFO("Succesfully called useMazeFollower service.");
                     recognitionAction();
-                    //Send to wallfollower to start
-                    srv_maze.request.go = true;
-                    if (maze_follower_client.call(srv_maze)) {
-                        ROS_INFO("Succesfully called useMazeFollower service.");
-                      }
-                      else
-                      {
-                        ROS_ERROR("Failed to call turn useMazeFollower service.");
-                      }
+                  }
+                  else
+                  {
+                    ROS_ERROR("Failed to call turn useMazeFollower service.");
+                  }
+                //Send to wallfollower to start
+                srv_maze.request.go = true;
+                if (maze_follower_client.call(srv_maze)) {
+                    ROS_INFO("Succesfully called useMazeFollower service.");
                   }
                   else
                   {
@@ -92,13 +91,7 @@ public:
         } else {
             ROS_ERROR("Failed to call turn useMazeFollower service.");
         }
-
-
     }
-
-    /*void costMapCallback(const nav_msgs::OccupancyGrid &msg) {
-        cost_map = msg;
-    }*/
 
 private:
     Client ac;
@@ -110,8 +103,6 @@ private:
     robot_msgs::useMazeFollower srv_maze;
     robot_msgs::useMazeFollower srv_path;
     ros::Timer timer;
-    //ros::Subscriber cost_map_sub;
-
 
 };
 
