@@ -35,7 +35,10 @@ public:
                     Client::SimpleActiveCallback(),
                     Client::SimpleFeedbackCallback());
 
-        bool finished_in_time = ac.waitForResult(ros::Duration(5.0));
+        bool finished_in_time = ac.waitForResult(ros::Duration(4.0));
+        if(ac.getState()==actionlib::SimpleClientGoalState::ABORTED){
+            ROS_INFO("Call was Aborted.");
+        }
         if (finished_in_time) {
             ROS_INFO("Object identified before time out.");
         } else {
@@ -46,14 +49,20 @@ public:
 
     void imageDetectedCallback(const robot_msgs::imagePosition &msg) {
         srv_object.request.point = msg.point;
+
         if (check_map_client.call(srv_object)) {
             ROS_INFO("Succesfully called checkObjectInMap service.");
             if (!srv_object.response.inMap) {
+                if(ros::Time::now().sec - stopfrequency <= laststop.sec){
+                    ROS_INFO("Allready detected something recently, dont stop");
+                    return;
+                }
                 //Send to wallfollower to stop
                 srv_maze.request.go = false;
                 if (maze_follower_client.call(srv_maze)) {
                     ROS_INFO("Succesfully called useMazeFollower service.");
                     recognitionAction();
+                    laststop=ros::Time::now();
                   }
                   else
                   {
@@ -103,6 +112,9 @@ private:
     robot_msgs::useMazeFollower srv_maze;
     robot_msgs::useMazeFollower srv_path;
     ros::Timer timer;
+    ros::Time laststop;
+    static const float stopfrequency = 1.5;
+    int PHASE;
 
 };
 
