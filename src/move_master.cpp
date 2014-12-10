@@ -23,9 +23,23 @@ public:
         maze_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_maze_follower");
         path_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_path_follower");
         timer = n.createTimer(ros::Duration(2.5*60), &MoveMaster::timerCallback, this, true);
+        PHASE=1;
+        if(n.hasParam("Phase")){
+            n.getParam("Phase",PHASE);
+        }
+        start_time=ros::Time::now();
     }
 
     ~MoveMaster() {}
+    void checktimeleft(){
+        ros::Duration time_gone = ros::Time::now()-start_time;
+        if(PHASE==1 && time_gone.sec > 60*5){
+            ROS_INFO("TIME IS OVER");
+        }
+        if(PHASE==2 && time_gone.sec > 60*3){
+            ROS_INFO("TIME IS OVER");
+        }
+    }
 
     void recognitionAction() {
         robot_msgs::recognitionActionGoal goal;
@@ -48,6 +62,7 @@ public:
     }
 
     void imageDetectedCallback(const robot_msgs::imagePosition &msg) {
+        if(PHASE==1){
         srv_object.request.point = msg.point;
 
         if (check_map_client.call(srv_object)) {
@@ -83,11 +98,12 @@ public:
           {
             ROS_ERROR("Failed to call turn checkObjectInMap service.");
           }
-
+        }
     }
 
     void timerCallback(const ros::TimerEvent&) {
         ROS_INFO("Three minutes have past");
+        PHASE=3;
         srv_maze.request.go = false;
         if (maze_follower_client.call(srv_maze)) {
             ROS_INFO("Succesfully called useMazeFollower service.");
@@ -113,6 +129,7 @@ private:
     robot_msgs::useMazeFollower srv_path;
     ros::Timer timer;
     ros::Time laststop;
+    ros::Time start_time;
     static const float stopfrequency = 1.5;
     int PHASE;
 
@@ -144,6 +161,7 @@ int main(int argc, char *argv[]) {
 
     while(ros::ok()) {
         ros::spinOnce();
+        move.checktimeleft();
         loop_rate.sleep();
     }
 
