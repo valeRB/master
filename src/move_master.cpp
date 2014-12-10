@@ -68,7 +68,7 @@ public:
         if (check_map_client.call(srv_object)) {
             ROS_INFO("Succesfully called checkObjectInMap service.");
             if (!srv_object.response.inMap) {
-                if(ros::Time::now().sec - stopfrequency <= laststop.sec){
+                if((ros::Time::now()-laststop).sec < stopfrequency ){
                     ROS_INFO("Allready detected something recently, dont stop");
                     return;
                 }
