@@ -1,6 +1,8 @@
 #include <ros/ros.h>
 #include <robot_msgs/imagePosition.h>
 #include <robot_msgs/recognitionActionAction.h>
+#include <robot_msgs/detectedObject.h>
+#include <vector>
 #include <actionlib/client/simple_action_client.h>
 #include <robot_msgs/checkObjectInMap.h>
 #include <robot_msgs/useMazeFollower.h>
@@ -19,8 +21,10 @@ public:
         ROS_INFO("Waiting for action server to start...");
         ROS_INFO("Action server started, sending goal.");
         img_position_sub = n.subscribe("/object_detection/object_position", 1, &MoveMaster::imageDetectedCallback, this);
+        obj_position_sub = n.subscribe("/goal_obj", 15, &MoveMaster::objectCallback, this);
         path_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_path_follower");
         mapping_off_pub = n.advertise<std_msgs::Bool>("/map_done", 1);
+
 
         ac.waitForServer();
 
@@ -118,6 +122,12 @@ public:
         }
     }
 
+    void objectCallback(const robot_msgs::detectedObject &obj_msg)
+    {
+        object = obj_msg;
+        objects.push_back(object);
+    }
+
     void timerCallback(const ros::TimerEvent&) {
         ROS_INFO("Three minutes have past");
         PHASE=3;
@@ -146,13 +156,16 @@ private:
     Client ac;
     ros::Subscriber img_position_sub;
     ros::Publisher mapping_off_pub;
+    ros::Subscriber obj_position_sub;
     ros::ServiceClient check_map_client;
     ros::ServiceClient maze_follower_client;
     ros::ServiceClient path_follower_client;
     robot_msgs::checkObjectInMap srv_object;
     robot_msgs::useMazeFollower srv_maze;
     robot_msgs::useMazeFollower srv_path;
+    robot_msgs::detectedObject object;
     std_msgs::Bool map_off;
+    std::vector<robot_msgs::detectedObject> objects;
     ros::Timer timer;
     ros::Time laststop;
     ros::Time start_time;
