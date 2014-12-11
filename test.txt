@@ -1,0 +1,385 @@
+... logging to /home/ras/.ros/log/c23a8572-8068-11e4-9461-f81654560f86/roslaunch-RAS23-25306.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/ras/catkin_ws/src/master/launch/phase_1.launch
+[1mstarted roslaunch server http://RAS23:58795/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /PID_controller/KDL
+ * /PID_controller/KDR
+ * /PID_controller/KIL
+ * /PID_controller/KIR
+ * /PID_controller/KPL
+ * /PID_controller/KPR
+ * /PID_controller/KUL
+ * /PID_controller/KUR
+ * /PID_controller/TUL
+ * /PID_controller/TUR
+ * /PID_controller/angVel
+ * /PID_controller/linVel
+ * /camera/camera_nodelet_manager/num_worker_threads
+ * /camera/depth_rectify_depth/interpolation
+ * /camera/depth_registered_rectify_depth/interpolation
+ * /camera/driver/auto_exposure
+ * /camera/driver/auto_white_balance
+ * /camera/driver/color_depth_synchronization
+ * /camera/driver/depth_camera_info_url
+ * /camera/driver/depth_frame_id
+ * /camera/driver/depth_registration
+ * /camera/driver/device_id
+ * /camera/driver/rgb_camera_info_url
+ * /camera/driver/rgb_frame_id
+ * /object_detection/crop/dMax
+ * /object_detection/crop/dMin
+ * /object_detection/crop/hMax
+ * /object_detection/crop/hMin
+ * /object_detection/crop/wMax
+ * /object_detection/crop/wMin
+ * /object_detection/heightCorrection
+ * /object_detection/hsv0/color
+ * /object_detection/hsv0/hmax
+ * /object_detection/hsv0/hmin
+ * /object_detection/hsv0/lowdiffh
+ * /object_detection/hsv0/lowdiffs
+ * /object_detection/hsv0/lowdiffv
+ * /object_detection/hsv0/smax
+ * /object_detection/hsv0/smin
+ * /object_detection/hsv0/updiffh
+ * /object_detection/hsv0/updiffs
+ * /object_detection/hsv0/updiffv
+ * /object_detection/hsv0/vmax
+ * /object_detection/hsv0/vmin
+ * /object_detection/hsv1/color
+ * /object_detection/hsv1/hmax
+ * /object_detection/hsv1/hmin
+ * /object_detection/hsv1/lowdiffh
+ * /object_detection/hsv1/lowdiffs
+ * /object_detection/hsv1/lowdiffv
+ * /object_detection/hsv1/smax
+ * /object_detection/hsv1/smin
+ * /object_detection/hsv1/updiffh
+ * /object_detection/hsv1/updiffs
+ * /object_detection/hsv1/updiffv
+ * /object_detection/hsv1/vmax
+ * /object_detection/hsv1/vmin
+ * /object_detection/hsv2/color
+ * /object_detection/hsv2/hmax
+ * /object_detection/hsv2/hmin
+ * /object_detection/hsv2/lowdiffh
+ * /object_detection/hsv2/lowdiffs
+ * /object_detection/hsv2/lowdiffv
+ * /object_detection/hsv2/smax
+ * /object_detection/hsv2/smin
+ * /object_detection/hsv2/updiffh
+ * /object_detection/hsv2/updiffs
+ * /object_detection/hsv2/updiffv
+ * /object_detection/hsv2/vmax
+ * /object_detection/hsv2/vmin
+ * /object_detection/hsv3/color
+ * /object_detection/hsv3/hmax
+ * /object_detection/hsv3/hmin
+ * /object_detection/hsv3/includeinvalid
+ * /object_detection/hsv3/lowdiffh
+ * /object_detection/hsv3/lowdiffs
+ * /object_detection/hsv3/lowdiffv
+ * /object_detection/hsv3/smax
+ * /object_detection/hsv3/smin
+ * /object_detection/hsv3/updiffh
+ * /object_detection/hsv3/updiffs
+ * /object_detection/hsv3/updiffv
+ * /object_detection/hsv3/vmax
+ * /object_detection/hsv3/vmin
+ * /object_detection/hsv4/color
+ * /object_detection/hsv4/hmax
+ * /object_detection/hsv4/hmin
+ * /object_detection/hsv4/lowdiffh
+ * /object_detection/hsv4/lowdiffs
+ * /object_detection/hsv4/lowdiffv
+ * /object_detection/hsv4/smax
+ * /object_detection/hsv4/smin
+ * /object_detection/hsv4/updiffh
+ * /object_detection/hsv4/updiffs
+ * /object_detection/hsv4/updiffv
+ * /object_detection/hsv4/vmax
+ * /object_detection/hsv4/vmin
+ * /object_detection/hsv5/color
+ * /object_detection/hsv5/hmax
+ * /object_detection/hsv5/hmin
+ * /object_detection/hsv5/lowdiffh
+ * /object_detection/hsv5/lowdiffs
+ * /object_detection/hsv5/lowdiffv
+ * /object_detection/hsv5/smax
+ * /object_detection/hsv5/smin
+ * /object_detection/hsv5/updiffh
+ * /object_detection/hsv5/updiffs
+ * /object_detection/hsv5/updiffv
+ * /object_detection/hsv5/vmax
+ * /object_detection/hsv5/vmin
+ * /object_detection/maxArea
+ * /object_detection/minArea
+ * /object_detection/rectPadding
+ * /object_detection/voxel/leafsize
+ * /rosdistro
+ * /rospatric = 0
+bluecube = 1
+redcube = 2
+purplecross = 3
+yellowcube = 4
+greencube = 5
+redball = 6
+yellowball = 7
+greencylinder = 8
+bluetriangle = 9
+ It is probably A blue RECTANGLE !!!!! 
+ It is probably A blue RECTANGLE !!!!! 
+ It is probably A blue RECTANGLE !!!!! 
+[0m[ INFO] [1418228398.726533962]: State: 2[0m
+[0m[ INFO] [1418228402.101500798]: Succesfully called turn service[0m
+[0m[ INFO] [1418228402.101597895]: SMALL_EDGE_TURN right[0m
+[0m[ INFO] [1418228402.101620517]: State: 6[0m
+[0m[ INFO] [1418228402.101641913]: Want to detect wall with back left sensor[0m
+[0m[ INFO] [1418228402.101661209]: back sensor: 1000[0m
+[0m[ INFO] [1418228402.101680227]: back: 0[0m
+[0m[ INFO] [1418228402.101699448]: Value: 1000[0m
+[0m[ INFO] [1418228402.201796979]: back: 0[0m
+[0m[ INFO] [1418228402.201841093]: Value: 1000[0m
+[0m[ INFO] [1418228402.301780344]: back: 0[0m
+[0m[ INFO] [1418228402.301818289]: Value: 1000[0m
+[0m[ INFO] [1418228402.401776605]: back: 0[0m
+[0m[ INFO] [1418228402.401813642]: Value: 1000[0m
+[0m[ INFO] [1418228402.501777816]: back: 0[0m
+[0m[ INFO] [1418228402.501815772]: Value: 1000[0m
+[0m[ INFO] [1418228402.601785671]: back: 0[0m
+[0m[ INFO] [1418228402.601825878]: Value: 1000[0m
+[0m[ INFO] [1418228402.701779402]: back: 0[0m
+[0m[ INFO] [1418228402.701818631]: Value: 1000[0m
+[0m[ INFO] [1418228402.801771874]: State: 2[0m
+[0m[ INFO] [1418228406.204097171]: Succesfully called turn service[0m
+[0m[ INFO] [1418228406.204273617]: SMALL_EDGE_TURN right[0m
+[0m[ INFO] [1418228406.204319910]: State: 0[0m
+[0m[ INFO] [1418228406.304463223]: State: 0[0m
+[0m[ INFO] [1418228406.405252586]: State: 0[0m
+[0m[ INFO] [1418228406.504290209]: State: 0[0m
+[0m[ INFO] [1418228406.604295040]: State: 0[0m
+[0m[ INFO] [1418228406.704298366]: State: 0[0m
+[0m[ INFO] [1418228406.804319515]: State: 0[0m
+[0m[ INFO] [1418228406.904291759]: State: 0[0m
+[0m[ INFO] [1418228407.004285868]: State: 0[0m
+[0m[ INFO] [1418228407.104289804]: State: 0[0m
+[0m[ INFO] [1418228407.204290198]: State: 0[0m
+[0m[ INFO] [1418228407.304284816]: State: 0[0m
+[0m[ INFO] [1418228407.404285780]: State: 0[0m
+[0m[ INFO] [1418228407.504290544]: State: 0[0m
+[0m[ INFO] [1418228407.604294176]: State: 0[0m
+[0m[ INFO] [1418228407.704292317]: State: 0[0m
+[0m[ INFO] [1418228407.804336390]: State: 0[0m
+[0m[ INFO] [1418228407.904389475]: State: 0[0m
+[0m[ INFO] [1418228408.004292524]: State: 0[0m
+[0m[ INFO] [1418228408.104285177]: State: 0[0m
+[0m[ INFO] [1418228408.204284126]: State: 0[0m
+[0m[ INFO] [1418228408.304291050]: State: 0[0m
+[0m[ INFO] [1418228408.404426653]: State: 0[0m
+[0m[ INFO] [1418228408.504287902]: State: 0[0m
+[0m[ INFO] [1418228408.604295280]: State: 0[0m
+[0m[ INFO] [1418228408.704290482]: State: 0[0m
+[0m[ INFO] [1418228408.804285686]: State: 0[0m
+[0m[ INFO] [1418228408.904281831]: State: 0[0m
+[0m[ INFO] [1418228409.004400991]: State: 1[0m
+[0m[ INFO] [1418228412.201583218]: Succesfully called turn service[0m
+[0m[ INFO] [1418228412.201706907]: State: 4[0m
+[0m[ INFO] [1418228412.210039163]: Succesfully called follow wall service[0m
+[0m[ INFO] [1418228412.301810836]: State: 0[0m
+[0m[ INFO] [1418228412.401930734]: State: 0[0m
+[0m[ INFO] [1418228412.501777195]: State: 0[0m
+[0m[ INFO] [1418228412.601881032]: State: 0[0m
+[0m[ INFO] [1418228412.702204225]: State: 0[0m
+[0m[ INFO] [1418228412.801779012]: State: 0[0m
+[0m[ INFO] [1418228412.901872168]: State: 0[0m
+[0m[ INFO] [1418228413.001779914]: State: 0[0m
+[0m[ INFO] [1418228413.101773844]: State: 0[0m
+[0m[ INFO] [1418228413.201785951]: State: 0[0m
+[0m[ INFO] [1418228413.301775403]: State: 0[0m
+[0m[ INFO] [1418228413.401787305]: State: 0[0m
+[0m[ INFO] [1418228413.501773943]: State: 0[0m
+[0m[ INFO] [1418228413.601773880]: State: 0[0m
+[0m[ INFO] [1418228413.701777006]: State: 0[0m
+[0m[ INFO] [1418228413.801800023]: State: 4[0m
+[0m[ INFO] [1418228413.803889697]: Succesfully called follow wall service[0m
+[0m[ INFO] [1418228413.901777726]: State: 2[0m
+[0m[ INFO] [1418228417.600908710]: Succesfully called turn service[0m
+[0m[ INFO] [1418228417.600989134]: State: 3[0m
+[0m[ INFO] [1418228417.603269519]: Succesfully called follow wall service[0m
+[0m[ INFO] [1418228417.701066076]: State: 3[0m
+[0m[ INFO] [1418228417.703031704]: Succesfully called foll It is probably A yellow RECTANGLE !!!!! 
+Loaded succesfull! Cols left : 496
+Try to train
+Training succeded
+ow wall service[0m
+[0m[ INFO] [1418228417.801064827]: State: 3[0m
+[0m[ INFO] [1418228417.803119083]: Succesfully called follow wall service[0m
+[0m[ INFO] [1418228417.901065382]: State: 3[0m
+[0m[ INFO] [1418228417.903066147]: Succesfully called follow wall service[0m
+[0m[ INFO] [1418228418.001065922]: State: 3[0m
+[0m[ INFO] [1418228418.003410833]: Succesfully called follow wall service[0m
+[0m[ INFO] [1418228418.101063552]: State: 5[0m
+[0m[ INFO] [1418228418.201064155]: State: 0[0m
+[0m[ INFO] [1418228418.301066413]: State: 0[0m
+[0m[ INFO] [1418228418.401091759]: State: 0[0m
+[0m[ INFO] [1418228418.501068712]: State: 0[0m
+[0m[ INFO] [1418228418.601062090]: State: 0[0m
+[0m[ INFO] [1418228418.701067103]: State: 0[0m
+[0m[ INFO] [1418228418.801063869]: State: 3[0m
+[0m[ INFO] [1418228418.803267696]: Succesfully called follow wall service[0m
+[0m[ INFO] [1418228418.901069051]: State: 2[0m
+[0m[ INFO] [1418228421.553146186]: Succesfully called turn service[0m
+[0m[ INFO] [1418228421.553467997]: SMALL_EDGE_TURN right[0m
+[0m[ INFO] [1418228421.553566059]: State: 6[0m
+[0m[ INFO] [1418228421.553653105]: Want to detect wall with back left sensor[0m
+[0m[ INFO] [1418228421.553738351]: back sensor: 16[0m
+[0m[ INFO] [1418228421.553814690]: back: 0[0m
+[0m[ INFO] [1418228421.553883897]: Value: 16[0m
+[0m[ INFO] [1418228421.653856692]: back: 0[0m
+[0m[ INFO] [1418228421.653936524]: Value: 13[0m
+[0m[ INFO] [1418228421.753857166]: back: 0[0m
+[0m[ INFO] [1418228421.753940489]: Value: 13[0m
+[0m[ INFO] [1418228421.853856735]: back: 0[0m
+[0m[ INFO] [1418228421.853936424]: Value: 13[0m
+[0m[ INFO] [1418228421.953848500]: back: 0[0m
+[0m[ INFO] [1418228421.953925543]: Value: 14[0m
+[0m[ INFO] [1418228422.053849058]: back: 0[0m
+[0m[ INFO] [1418228422.053921714]: Value: 13[0m
+[0m[ INFO] [1418228422.153893087]: back: 0[0m
+[0m[ INFO] [1418228422.153976895]: Value: 13[0m
+[0m[ INFO] [1418228422.253851548]: back: 0[0m
+[0m[ INFO] [1418228422.253925753]: Value: 12[0m
+[0m[ INFO] [1418228422.353848483]: back: 0[0m
+[0m[ INFO] [1418228422.353923490]: Value: 12[0m
+[0m[ INFO] [1418228422.453922549]: back: 0[0m
+[0m[ INFO] [1418228422.454015715]: Value: 12[0m
+[0m[ INFO] [1418228422.553856379]: back: 0[0m
+[0m[ INFO] [1418228422.553942835]: Value: 12[0m
+[0m[ INFO] [1418228422.653844925]: back: 0[0m
+[0m[ INFO] [1418228422.653918743]: Value: 12[0m
+[0m[ INFO] [1418228422.753851241]: back: 0[0m
+[0m[ INFO] [1418228422.753927766]: Value: 12[0m
+[0m[ INFO] [1418228422.853856245]: back: 0[0m
+[0m[ INFO] [1418228422.853936185]: Value: 12[0m
+[0m[ INFO] [1418228422.954000041]: back: 0[0m
+[0m[ INFO] [1418228422.954105952]: Value: 12[0m
+[0m[ INFO] [1418228423.053856053]: back: 0[0m
+[0m[ INFO] [1418228423.053934985]: Value: 12[0m
+[0m[ INFO] [1418228423.153849077]: back: 0[0m
+[0m[ INFO] [1418228423.153926272]: Value: 12[0m
+[0m[ INFO] [1418228423.253855196]: back: 0[0m
+[0m[ INFO] [1418228423.253935621]: Value: 12[0m
+[0m[ INFO] [1418228423.353849723]: back: 0[0m
+[0m[ INFO] [1418228423.353928405]: Value: 12[0m
+[0m[ INFO] [1418228423.453852291]: back: 0[0m
+[0m[ INFO] [1418228423.453931656]: Value: 12[0m
+[0m[ INFO] [1418228423.553861628]: back: 0[0m
+[0m[ INFO] [1418228423.553948378]: Value: 12[0m
+[0m[ INFO] [1418228423.653851286]: back: 0[0m
+[0m[ INFO] [1418228423.654002887]: Value: 13[0m
+[0m[ INFO] [1418228423.754009628]: back: 0[0m
+[0m[ INFO] [1418228423.754215399]: Value: 13[0m
+[0m[ INFO] [1418228423.853853520]: back: 0[0m
+[0m[ INFO] [1418228423.853932250]: Value: 13[0m
+[0m[ INFO] [1418228423.953857493]: back: 0[0m
+[0m[ INFO] [1418228423.953938755]: Value: 13[0m
+[0m[ INFO] [1418228424.053846848]: back: 0[0m
+[0m[ INFO] [1418228424.053912531]: Value: 13[0m
+[0m[ INFO] [1418228424.153858293]: back: 0[0m
+[0m[ INFO] [1418228424.153937872]: Value: 13[0m
+[0m[ INFO] [1418228424.253862434]: back: 0[0m
+[0m[ INFO] [1418228424.253946761]: Value: 13[0m
+[0m[ INFO] [1418228424.353852382]: back: 0[0m
+[0m[ INFO] [1418228424.353931374]: Value: 14[0m
+[0m[ INFO] [1418228424.453975049]: back: 0[0m
+[0m[ INFO] [1418228424.454112402]: Value: 14[0m
+[0m[ INFO] [1418228424.553849512]: back: 0[0m
+[0m[ INFO] [1418228424.553926372]: Value: 14[0m
+[0m[ INFO] [1418228424.653860193]: back: 0[0m
+[0m[ INFO] [1418228424.653948210]: Value: 13[0m
+[0m[ INFO] [1418228424.753849168]: back: 0[0m
+[0m[ INFO] [1418228424.753923021]: Value: 13[0m
+[0m[ INFO] [1418228424.853874593]: back: 0[0m
+[0m[ INFO] [1418228424.853988198]: Value: 13[0m
+[0m[ INFO] [1418228424.953969813]: back: 0[0m
+[0m[ INFO] [1418228424.954099396]: Value: 13[0m
+[0m[ INFO] [1418228425.053861838]: back: 0[0m
+[0m[ INFO] [1418228425.053945823]: Value: 12[0m
+[0m[ INFO] [1418228425.153864292]: back: 0[0m
+[0m[ INFO] [1418228425.153973441]: Value: 12[0m
+[0m[ INFO] [1418228425.253848655]: back: 0[0m
+[0m[ INFO] [1418228425.253924815]: Value: 13[0m
+[0m[ INFO] [1418228425.353848195]: back: 0[0m
+[0m[ INFO] [1418228425.353922427]: Value: 12[0m
+[0m[ INFO] [1418228425.453855132]: back: 0[0m
+[0m[ INFO] [1418228425.453934091]: Value: 12[0m
+[0m[ INFO] [1418228425.553850448]: back: 0[0m
+[0m[ INFO] [1418228425.553929727]: Value: 13[0m
+[0m[ INFO] [1418228425.653845893]: back: 0[0m
+[0m[ INFO] [1418228425.653920013]: Value: 12[0m
+[0m[ INFO] [1418228425.753865554]: back: 0[0m
+[0m[ INFO] [1418228425.753952983]: Value: 12[0m
+[0m[ INFO] [1418228425.853859675]: back: 0[0m
+[0m[ INFO] [1418228425.853945833]: Value: 10[0m
+[0m[ INFO] [1418228425.953848788]: back: 0[0m
+[0m[ INFO] [1418228425.953917197]: Value: 10[0m
+[0m[ INFO] [1418228426.053868376]: back: 0[0m
+[0m[ INFO] [1418228426.053971521]: Value: 23[0m
+[0m[ INFO] [1418228426.153845170]: back: 0[0m
+[0m[ INFO] [1418228426.153918847]: Value: 14[0m
+[0m[ INFO] [1418228426.253847177]: back: 0[0m
+[0m[ INFO] [1418228426.253920559]: Value: 12[0m
+[0m[ INFO] [1418228426.353908030]: back: 0[0m
+[0m[ INFO] [1418228426.354056076]: Value: 18[0m
+[0m[ INFO] [1418228426.453896410]: back: 0[0m
+[0m[ INFO] [1418228426.454014114]: Value: 21[0m
+[0m[ INFO] [1418228426.553915158]: back: 0[0m
+[0m[ INFO] [1418228426.554027112]: Value: 21[0m
+[0m[ INFO] [1418228426.653903009]: back: 0[0m
+[0m[ INFO] [1418228426.654030315]: Value: 22[0m
+[0m[ INFO] [1418228426.753882973]: back: 0[0m
+[0m[ INFO] [1418228426.753991368]: Value: 21[0m
+[0m[ INFO] [1418228426.853850470]: back: 0[0m
+[0m[ INFO] [1418228426.853927364]: Value: 17[0m
+[0m[ INFO] [1418228426.953847117]: back: 0[0m
+[0m[ INFO] [1418228426.953922261]: Value: 15[0m
+[0m[ INFO] [1418228427.053846583]: back: 0[0m
+[0m[ INFO] [1418228427.053919918]: Value: 13[0m
+[0m[ INFO] [1418228427.153847837]: back: 0[0m
+[0m[ INFO] [1418228427.153923184]: Value: 11[0m
+[0m[ INFO] [1418228427.253877342]: back: 0[0m
+[0m[ INFO] [1418228427.253997328]: Value: 10[0m
+[0m[ INFO] [1418228427.353867268]: back: 0[0m
+[0m[ INFO] [1418228427.353954271]: Value: 9[0m
+[0m[ INFO] [1418228427.453985717]: back: 0[0m
+[0m[ INFO] [1418228427.454080394]: Value: 8[0m
+[0m[ INFO] [1418228427.553847118]: back: 0[0m
+[0m[ INFO] [1418228427.553925112]: Value: 7[0m
+[0m[ INFO] [1418228427.653848558]: back: 0[0m
+[0m[ INFO] [1418228427.653925390]: Value: 7[0m
+[0m[ INFO] [1418228427.753844746]: back: 0[0m
+[0m[ INFO] [1418228427.753921622]: Value: 6[0m
+[0m[ INFO] [1418228427.853846085]: back: 0[0m
+[0m[ INFO] [1418228427.853918963]: Value: 7[0m
+[0m[ INFO] [1418228427.953846762]: back: 0[0m
+[0m[ INFO] [1418228427.953922756]: Value: 7[0m
+[0m[ INFO] [1418228428.053848216]: back: 0[0m
+[0m[ INFO] [1418228428.053928920]: Value: 7[0m
+[0m[ INFO] [1418228428.153856480]: back: 0[0m
+[0m[ INFO] [1418228428.153940265]: Value: 7[0m
+[0m[ INFO] [1418228428.253846238]: back: 0[0m
+[0m[ INFO] [1418228428.253919715]: Value: 7[0m
+[0m[ INFO] [1418228428.353844482]: back: 0[0m
+[0m[ INFO] [1418228428.353913584]: Value: 7[0m
+[0m[ INFO] [1418228428.453849038]: back: 0[0m
+[0m[ INFO] [1418228428.453926920]: Value: 7[0m
+[0m[ INFO] [1418228428.553848295]: back: 0[0m
+[0m[ INFO] [1418228428.553927097]: Value: 7[0m
+[

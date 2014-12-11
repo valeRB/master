@@ -1,0 +1,19 @@
+<launch>
+
+
+    <!-- Motor Controller -->
+    <include file="$(find motor_controller)/launch/controlParams.launch" />
+
+    <!-- Maze Follower -->
+    <include file="$(find wall_follower)/launch/maze_launch.launch" />
+
+    <!-- Mapping -->
+    <include file="$(find mapping)/launch/mapping_launch.launch" />     
+
+    <!-- Object Detection -->
+    <!-- <include file="$(find object_recognition)/launch/object_launch.launch" /> -->
+
+    <node pkg="master" type="move_master" name="move_master" output="screen" />
+    <node pkg="path_planning" type="path_navigation" name="path_navigation" output="screen" />
+
+</launch>
