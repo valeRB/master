@@ -28,9 +28,9 @@ public:
 	srv_maze.request.go = true;
         (maze_follower_client.call(srv_maze));
         PHASE=1;
-        /*if(n.hasParam("Phase")){
-            n.getParam("Phase",PHASE);
-        }*/
+        if(n.hasParam("PHASE")){
+            n.getParam("PHASE",PHASE);
+        }
         start_time=ros::Time::now();
     }
 

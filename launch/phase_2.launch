@@ -14,7 +14,7 @@
     <include file="$(find object_recognition)/launch/object_launch.launch" />
 
     <node pkg="master" type="move_master" name="move_master" output="screen" >
-    <param name="PHASE" value="1" />
+    <param name="PHASE" value="2" />
     </node>
 
     <node pkg="path_planning" type="path_navigation" name="path_navigation" output="screen"/>
