@@ -18,18 +18,27 @@ public:
         ROS_INFO("Waiting for action server to start...");
         ROS_INFO("Action server started, sending goal.");
         img_position_sub = n.subscribe("/object_detection/object_position", 1, &MoveMaster::imageDetectedCallback, this);
-        check_map_client = n.serviceClient<robot_msgs::checkObjectInMap>("/object_in_map");
-        maze_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_maze_follower");
         path_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_path_follower");
 
         ac.waitForServer();
-	timer = n.createTimer(ros::Duration(2*60), &MoveMaster::timerCallback, this, true);
 
-	srv_maze.request.go = true;
-        (maze_follower_client.call(srv_maze));
         PHASE=1;
         if(n.hasParam("PHASE")){
             n.getParam("PHASE",PHASE);
+        }
+
+        if (PHASE == 1) {
+            check_map_client = n.serviceClient<robot_msgs::checkObjectInMap>("/object_in_map");
+            maze_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_maze_follower");
+            timer = n.createTimer(ros::Duration(2*60), &MoveMaster::timerCallback, this, true);
+            srv_maze.request.go = true;
+            (maze_follower_client.call(srv_maze));
+
+        } else if (PHASE == 2) {
+            srv_path.request.go = true;
+            path_follower_client.call(srv_path);
+        } else {
+
         }
         start_time=ros::Time::now();
     }
@@ -69,39 +78,41 @@ public:
         if(PHASE==1){
         srv_object.request.point = msg.point;
 
-        if (check_map_client.call(srv_object)) {
-            ROS_INFO("Succesfully called checkObjectInMap service.");
-            if (!srv_object.response.inMap) {
-                if((ros::Time::now()-laststop).sec < stopfrequency ){
-                    ROS_INFO("Allready detected something recently, dont stop");
-                    return;
+            if (check_map_client.call(srv_object)) {
+                ROS_INFO("Succesfully called checkObjectInMap service.");
+                if (!srv_object.response.inMap) {
+                    if((ros::Time::now()-laststop).sec < stopfrequency ){
+                        ROS_INFO("Allready detected something recently, dont stop");
+                        return;
+                    }
+                    //Send to wallfollower to stop
+                    srv_maze.request.go = false;
+                    if (maze_follower_client.call(srv_maze)) {
+                        ROS_INFO("Succesfully called useMazeFollower service.");
+                        recognitionAction();
+                        laststop=ros::Time::now();
+                      }
+                      else
+                      {
+                        ROS_ERROR("Failed to call turn useMazeFollower service.");
+                      }
+                    //Send to wallfollower to start
+                    srv_maze.request.go = true;
+                    if (maze_follower_client.call(srv_maze)) {
+                        ROS_INFO("Succesfully called useMazeFollower service.");
+                      }
+                      else
+                      {
+                        ROS_ERROR("Failed to call turn useMazeFollower service.");
+                      }
                 }
-                //Send to wallfollower to stop
-                srv_maze.request.go = false;
-                if (maze_follower_client.call(srv_maze)) {
-                    ROS_INFO("Succesfully called useMazeFollower service.");
-                    recognitionAction();
-                    laststop=ros::Time::now();
-                  }
-                  else
-                  {
-                    ROS_ERROR("Failed to call turn useMazeFollower service.");
-                  }
-                //Send to wallfollower to start
-                srv_maze.request.go = true;
-                if (maze_follower_client.call(srv_maze)) {
-                    ROS_INFO("Succesfully called useMazeFollower service.");
-                  }
-                  else
-                  {
-                    ROS_ERROR("Failed to call turn useMazeFollower service.");
-                  }
-            }
-          }
-          else
-          {
-            ROS_ERROR("Failed to call turn checkObjectInMap service.");
-          }
+              }
+              else
+              {
+                ROS_ERROR("Failed to call turn checkObjectInMap service.");
+              }
+        } else if (PHASE == 2) {
+            return;
         }
     }
 
@@ -111,16 +122,21 @@ public:
         srv_maze.request.go = false;
         if (maze_follower_client.call(srv_maze)) {
             ROS_INFO("Succesfully called useMazeFollower service.");
-            srv_path.request.go = true;
-            if (path_follower_client.call(srv_path)) {
-                ROS_INFO("Succesfully called pathFollower service.");
-            } else {
-                ROS_ERROR("Failed to call turn pathFollower service.");
-            }
+            callPathFollower();
         } else {
             ROS_ERROR("Failed to call turn useMazeFollower service.");
         }
     }
+
+    void callPathFollower(){
+        srv_path.request.go = true;
+        if (path_follower_client.call(srv_path)) {
+            ROS_INFO("Succesfully called pathFollower service.");
+        } else {
+            ROS_ERROR("Failed to call pathFollower service.");
+        }
+    }
+
 
 private:
     Client ac;
