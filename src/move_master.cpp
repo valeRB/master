@@ -6,6 +6,7 @@
 #include <robot_msgs/useMazeFollower.h>
 #include <stdlib.h>
 #include <nav_msgs/OccupancyGrid.h>
+#include <std_msgs/Bool.h>
 
 typedef actionlib::SimpleActionClient<robot_msgs::recognitionActionAction> Client;
 
@@ -19,6 +20,7 @@ public:
         ROS_INFO("Action server started, sending goal.");
         img_position_sub = n.subscribe("/object_detection/object_position", 1, &MoveMaster::imageDetectedCallback, this);
         path_follower_client = n.serviceClient<robot_msgs::useMazeFollower>("/use_path_follower");
+        mapping_off_pub = n.advertise<std_msgs::Bool>("/map_done", 1);
 
         ac.waitForServer();
 
@@ -123,6 +125,8 @@ public:
         if (maze_follower_client.call(srv_maze)) {
             ROS_INFO("Succesfully called useMazeFollower service.");
             callPathFollower();
+            map_off.data = true;
+            mapping_off_pub.publish(map_off);
         } else {
             ROS_ERROR("Failed to call turn useMazeFollower service.");
         }
@@ -141,12 +145,14 @@ public:
 private:
     Client ac;
     ros::Subscriber img_position_sub;
+    ros::Publisher mapping_off_pub;
     ros::ServiceClient check_map_client;
     ros::ServiceClient maze_follower_client;
     ros::ServiceClient path_follower_client;
     robot_msgs::checkObjectInMap srv_object;
     robot_msgs::useMazeFollower srv_maze;
     robot_msgs::useMazeFollower srv_path;
+    std_msgs::Bool map_off;
     ros::Timer timer;
     ros::Time laststop;
     ros::Time start_time;
